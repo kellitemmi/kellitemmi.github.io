@@ -1,93 +1,467 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<style>
-    html * {
-        font-size: 16px;
-        line-height: 1.5;
-        font-family: sans-serif;
-        margin-left: 50px;
-        margin-right: 50px
-    }
-    h1 {
-        text-align: center;
-    }
-    p {
-        width: 400px;
-        margin: auto;
-    }
-.button {
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: navajowhite;
-    text-decoration-color: black;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    cursor: point;
-    text-align: center;
-}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kelli Medina - Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-.button1 {
-    background-color: cornflowerblue;
-}
-.button2 {
-    background-color: rgb(155, 208, 174);
-}
-.button3 {
-    background-color: darksalmon;
-}
-.button4 {
-    background-color:rgb(145, 145, 145);
-}
-.text-center {
-    text-align: center;
-}
-</style>
+        :root {
+            --primary-color: #6B9BD1;
+            --secondary-color: #9BD0AE;
+            --accent-color: #E9967A;
+            --dark-color: #2C3E50;
+            --light-bg: #F8F9FA;
+            --white: #FFFFFF;
+            --text-color: #333333;
+            --gray: #6C757D;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--white);
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            flex-wrap: wrap;
+            gap: 2rem;
+            padding: 0 2rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            transition: color 0.3s ease;
+            font-size: 1rem;
+        }
+
+        nav a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Sections */
+        section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        section:first-of-type {
+            margin-top: 60px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--dark-color);
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: var(--dark-color);
+            text-align: center;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background-color: var(--primary-color);
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--dark-color);
+        }
+
+        p {
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Hero Section */
+        #home {
+            min-height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(135deg, var(--light-bg) 0%, var(--white) 100%);
+        }
+
+        #home h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        #home .subtitle {
+            font-size: 1.3rem;
+            color: var(--gray);
+            margin-bottom: 2rem;
+        }
+
+        /* Buttons */
+        .btn-container {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .btn {
+            padding: 0.8rem 2rem;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            color: var(--white);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+        }
+
+        .btn-secondary {
+            background-color: var(--secondary-color);
+        }
+
+        .btn-accent {
+            background-color: var(--accent-color);
+        }
+
+        .btn-dark {
+            background-color: var(--dark-color);
+        }
+
+        /* About Section */
+        #about {
+            background-color: var(--light-bg);
+        }
+
+        .about-content {
+            display: grid;
+            gap: 2rem;
+        }
+
+        /* Acting Portfolio Section */
+        #acting {
+            background-color: var(--light-bg);
+        }
+
+        .acting-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .acting-item {
+            background-color: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .acting-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+        }
+
+        .acting-image {
+            width: 100%;
+            height: 250px;
+            background-color: var(--light-bg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gray);
+            font-style: italic;
+        }
+
+        .acting-info {
+            padding: 1.5rem;
+        }
+
+        .acting-info h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--accent-color);
+        }
+
+        .acting-info .role {
+            font-weight: 600;
+            color: var(--dark-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .acting-info .details {
+            color: var(--gray);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .acting-placeholder {
+            text-align: center;
+            padding: 3rem;
+            background-color: var(--white);
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        .acting-placeholder p {
+            color: var(--gray);
+            font-style: italic;
+        }
+
+        /* Video Container */
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            height: 0;
+            overflow: hidden;
+            max-width: 100%;
+            background-color: #000;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        .video-item {
+            background-color: var(--white);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+        }
+
+        .video-item h3 {
+            margin-bottom: 1rem;
+            color: var(--accent-color);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-color);
+            color: var(--white);
+            text-align: center;
+            padding: 2rem;
+        }
+
+        footer a {
+            color: var(--secondary-color);
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            nav ul {
+                gap: 1rem;
+            }
+
+            #home h1 {
+                font-size: 2rem;
+            }
+
+            #home .subtitle {
+                font-size: 1.1rem;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            h2 {
+                font-size: 1.7rem;
+            }
+
+            section {
+                padding: 3rem 1.5rem;
+            }
+
+            .btn-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+    </style>
 </head>
 <body>
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#acting">Acting</a></li>
+            <li><a href="https://github.com/kellitemmi" target="_blank">GitHub</a></li>
+        </ul>
+    </nav>
 
-<h1>Hello! My name is Kelli Medina.</h1>
+    <!-- Hero Section -->
+    <section id="home">
+        <h1>Kelli Medina</h1>
+        <p class="subtitle">Statistics • Computer Science • Economics • Actor</p>
+        <p>University of Illinois student passionate about data science, coding, and the performing arts.</p>
+        <div class="btn-container">
+            <a href="#acting" class="btn btn-primary">Acting Experience</a>
+            <a href="#projects" class="btn btn-secondary">Software Experience</a>
+            <a href="#about" class="btn btn-accent">Learn More</a>
+        </div>
+    </section>
 
-<p>I'm currently a student at the University of Illinois, 
-    studying Statistics, Computer Science, and Economics.</p>
-<br>
-<p>My hobbies include playing flute, learning, and hanging out with cats!</p>
-<br>
-<p>I'm currently looking for an internship for Summer 2022, 
-    primarily Data Science, Research, or Coding related. Email me 
-    at [first name]temmie[AT]gmail[DOT]com 
-</p>
-<br>
-<br>
-<div class="text-center">
-<button 
-    class="button button1" 
-    onclick="window.location.href='https://drive.google.com/file/d/1pRgFHgA3eJdjuP_inQMqaf-5SU4OXUbB/view?usp=sharing';">
-    Resume
-</button>
+    <!-- About Section -->
+    <section id="about">
+        <h2>About Me</h2>
+        <div class="about-content">
+            <p>
+                I recently graduated from the University of Illinois with a degree in Computer Science and Economics, 
+                both of which are strong passions of mine. But that is not all I'm about!
+                I love to work with others in many forms, and whether that's sharing a coding project 
+                or acting together in a play, I am grateful for any opportunity that comes my way.
+            </p>
+            <h3 style="text-align: center; margin-top: 2rem;">About Me: Computer Science, Economics, Statistics</h3>
+            <p>
+                During my time in high school, I was drawn to my math classes the most, especially my AP Statistics class. 
+                The conclusions that can be reached from data, evidence, and knowledge of probability had always been of great interest to me, 
+                and once I explored Statistics in college, I was hooked. 
+                I went out of my way to ensure that I could declare Statistics as my major as soon as possible,
+                and learned both Calculus I and II over the summer, as well as an additional Statistics course, to ensure it could happen.
 
-<button 
-    class="button button2" 
-    onclick="window.location.href='aboutme.html'">
-    About Me
-</button>
+                Just like statistics, Computer Science drew me in, and I've gained plenty of experience since!
+                I worked as an SDE Intern at Country Financial from May 2023-2024, 
+                and at Amazon I worked as an SDE Intern May-August 2024, 
+                and as an SDE I from August 2025 to present!
+            </p>
+        </div>
+    </section>
 
-<button 
-    class="button button3"
-    onclick="window.location.href='projects.html'">
-    Projects
-</button>
+    <!-- Acting Portfolio Section -->
+    <section id="acting">
+        <h2>Acting Portfolio</h2>
+        <p style="text-align: center; margin-bottom: 3rem;">
+            My experience with acting began during my late high school years, 
+            and developed well in college!
+            In college, I spent an overwhelming amount of time in casual open reads 
+            of all sorts of plays, and eventually found myself drawn to 
+            the university's Shakespeare group during my last year. 
+            I had the incredible opportunity of performing as Volumnia 
+            in the group's 2024 production of <i>Coriolanus</i>, 
+            Lady Macbeth in <i>Macbeth</i> in 2025, and Count Rugen in <i>Princess Bride</i> in 2024. 
+            Although I am relatively new to acting, 
+            I have an immense passion for it 
+            to the point where I cannot keep myself away. 
+            I am an avid learner and am obsessed with improving my acting, 
+            engaging with others, and arguing about interpretations of lines. 
+            Below you can find a video of part of my latest performance: 
+            Lady Macbeth in What You Will's 2025 production of <i>Macbeth</i>.
+        </p>
+        
+        <!-- Video Performance -->
+        <div class="video-item">
+            <h3>Performance Reel</h3>
+            <div class="video-container">
+                <iframe 
+                    src="https://www.youtube.com/embed/5g5G33iEiEU?si=6d-fmlXW6gjMLfKW" 
+                    title="YouTube video player" 
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                    referrerpolicy="strict-origin-when-cross-origin"
+                    allowfullscreen>
+                </iframe>
+            </div>
+        </div>
 
-<!--
-<button 
-    class="button button4" 
-    onclick="window.location.href='www.linkedin.com/in/kelli-medina-5616a0234/';">
-    LinkedIn
-</button>
--->
-</div>
+        <!-- Additional acting items can be added below -->
+        <!-- Example structure for when you add more acting items:
+        <div class="acting-grid">
+            <div class="acting-item">
+                <div class="acting-image">
+                    <img src="path-to-image.jpg" alt="Production name" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <div class="acting-info">
+                    <h3>Production Name</h3>
+                    <div class="role">Role: Character Name</div>
+                    <div class="details">Theater/Company • Year</div>
+                </div>
+            </div>
+        </div>
+        -->
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Kelli Medina. All rights reserved.</p>
+        <p>
+            <a href="https://github.com/kellitemmi" target="_blank">GitHub</a> • 
+            <a href="mailto:kellitemmie@gmail.com">Email</a>
+        </p>
+    </footer>
 </body>
 </html>
